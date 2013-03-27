@@ -1,0 +1,74 @@
+#!/usr/bin/make -f
+
+CFLAGS = -Wall -g
+
+CFLAGS += -O0
+
+configure: configure-stamp
+configure-stamp:
+	dh_testdir
+
+	cp -a Weakref-* build-php5
+	cd build-php5 && phpize5
+	cd build-php5 && ./configure --build=$(DEB_BUILD_GNU_TYPE) --host=$(DEB_HOST_GNU_TYPE)
+	
+	touch configure-stamp
+
+
+build: build-arch build-indep
+
+build-arch: build-stamp
+
+build-indep: build-stamp
+
+build-stamp: configure-stamp 
+	dh_testdir
+
+	cd build-php5 && $(MAKE) CFLAGS="$(CFLAGS)"
+
+	touch $@
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp configure-stamp
+
+	rm -rf build-php5
+	
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_prep
+	dh_installdirs
+
+	cd build-php5 && \
+	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/libweakref-php5 install
+	chmod a+x debian/dh_pecl5
+	DH_AUTOSCRIPTDIR=debian/ debian/dh_pecl5 -plibweakref-php5
+	echo "extension=weakref.so" > $(CURDIR)/debian/libweakref-php5/etc/php5/mods-available/weakref.ini
+
+binary-indep: build install
+
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+	dh_installdebconf
+	dh_installchangelogs
+	dh_installdocs
+	dh_installexamples
+	dh_install
+	dh_link
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install configure
+

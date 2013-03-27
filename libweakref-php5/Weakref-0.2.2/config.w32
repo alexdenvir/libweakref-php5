@@ -1,0 +1,7 @@
+// vim:ft=javascript
+
+ARG_ENABLE("weakref", "Weakref support", "no");
+
+if (PHP_WEAKREF != "no") {
+	EXTENSION("weakref", "php_weakref.c wr_weakref.c wr_weakmap.c", PHP_WEAKREF_SHARED);
+}

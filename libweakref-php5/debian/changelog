@@ -1,0 +1,5 @@
+libweakref-php5 (0.2.2-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)
+
+ -- Alex Denvir <coldfff@gmail.com>  Sun, 24 Mar 2013 14:30:33 +0000

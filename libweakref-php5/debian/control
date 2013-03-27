@@ -1,0 +1,15 @@
+Source: libweakref-php5
+Section: web
+Priority: extra
+Maintainer: Alex Denvir <coldfff@gmail.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Homepage: http://pecl.php.net/package/Weakref
+
+Package: libweakref-php5
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Implementation of weak references for PHP 5
+ A weak reference provides a gateway to an object without preventing
+ that object from being collected by the garbage collector (GC).
+ It also provides a way to turn a weak reference into a strong one.
