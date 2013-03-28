@@ -1,4 +1,4 @@
-Source: libweakref-php5
+Source: php5-weakref
 Section: web
 Priority: extra
 Maintainer: Alex Denvir <coldfff@gmail.com>
@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= 8.0.0), php5-dev, libpcre3-dev, hardening-wrapper
 Standards-Version: 3.9.3
 Homepage: http://pecl.php.net/package/Weakref
 
-Package: libweakref-php5
+Package: php5-weakref
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Implementation of weak references for PHP 5

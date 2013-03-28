@@ -1,4 +1,4 @@
-libweakref-php5 (0.2.2-1) unstable; urgency=low
+php5-weakref (0.2.2-1) unstable; urgency=low
 
   * Initial release (Closes: #704079)
 

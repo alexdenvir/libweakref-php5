@@ -46,10 +46,10 @@ install: build
 	dh_installdirs
 
 	cd build-php5 && \
-	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/libweakref-php5 install
+	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/php5-weakref install
 	chmod a+x debian/dh_pecl5
-	DH_AUTOSCRIPTDIR=debian/ debian/dh_pecl5 -plibweakref-php5
-	echo "extension=weakref.so" > $(CURDIR)/debian/libweakref-php5/etc/php5/mods-available/weakref.ini
+	DH_AUTOSCRIPTDIR=debian/ debian/dh_pecl5 -pphp5-weakref
+	echo "extension=weakref.so" > $(CURDIR)/debian/php5-weakref/etc/php5/mods-available/weakref.ini
 
 binary-indep: build install
 
