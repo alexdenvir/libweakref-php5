@@ -1,5 +1,7 @@
 #!/usr/bin/make -f
 
+export DEB_BUILD_HARDENING=1
+
 CFLAGS = -Wall -g
 
 CFLAGS += -O0
