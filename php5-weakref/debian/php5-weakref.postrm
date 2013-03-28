@@ -2,8 +2,10 @@
 
 set -e
 
-if [ "$1" = "remove" ]; then
-    php5dismod weakref
+if [ "$1" = "remove" -o "$1" = "purge" ]; then
+    if [ -f /usr/sbin/php5dismod ]; then
+        php5dismod weakref
+    fi
 fi
 
 #DEBHELPER#
