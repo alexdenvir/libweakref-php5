@@ -2,7 +2,7 @@ Source: libweakref-php5
 Section: web
 Priority: extra
 Maintainer: Alex Denvir <coldfff@gmail.com>
-Build-Depends: debhelper (>= 8.0.0)
+Build-Depends: debhelper (>= 8.0.0), php5-dev
 Standards-Version: 3.9.3
 Homepage: http://pecl.php.net/package/Weakref
 
